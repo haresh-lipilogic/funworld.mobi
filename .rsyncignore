@@ -1,0 +1,44 @@
+.git/
+.github/
+.gitignore
+.rsyncignore
+
+.env
+.env.backup
+.env.production
+
+# Images
+*.jpg
+*.jpeg
+*.JPG
+*.JPEG
+*.png
+*.PNG
+*.gif
+*.bmp
+*.webp
+*.svg
+*.ico
+*.tiff
+*.tif
+
+# Videos
+*.mp4
+*.mov
+*.avi
+*.webm
+*.mkv
+*.flv
+*.wmv
+*.mpeg
+*.mpg
+*.m4v
+
+# Large game build artifacts not tracked in git
+hgame_30102025/02.Kingdom Defense/Construct 3/Kingdom Defense.c3p
+hgame_30102025/02.Kingdom Defense/Construct 2/Kingdom Defense.capx
+hgame_30102025/02.Kingdom Defense/Android & IOS/IOS.zip
+hgame_30102025/02.Kingdom Defense/HTML5/HTML5.zip
+hgame_30102025/02.Kingdom Defense/Android & IOS/Android.zip
+hgame_30102025/09.Grand Commander/Construct 2/Grand Commander.capx
+hgame_30102025/09.Grand Commander/Construct 3/Grand Commander.c3p

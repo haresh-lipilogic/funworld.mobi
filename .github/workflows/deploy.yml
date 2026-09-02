@@ -1,0 +1,35 @@
+name: Deploy to server
+
+# Deploys on every push to main. You can also run it manually
+# from the Actions tab via the "Run workflow" button.
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy repo via rsync over SSH
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          # -r recursive, -l copy symlinks as symlinks, -v verbose, -z compress.
+          # --checksum: compare file CONTENT (hash) not timestamp, so only
+          #   genuinely-changed files transfer.
+          # No --delete: this is production, so files/directories removed from
+          #   git are left alone on the server — deploy only adds/updates,
+          #   never deletes. Remove things on the server manually if needed.
+          # --exclude-from=.rsyncignore: skip server-only files (images,
+          #   videos, .env) that are gitignored and not part of the repo.
+          switches: -rlvz --checksum --omit-dir-times --exclude-from=.rsyncignore
+          # Trailing slash = copy the CONTENTS of the repo root into remote_path.
+          path: ./
+          remote_path: /var/www/funworld.mobi/html
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_port: ${{ secrets.SSH_PORT }}
+          remote_user: ${{ secrets.SSH_USER }}
+          remote_key:  ${{ secrets.SSH_KEY }}
