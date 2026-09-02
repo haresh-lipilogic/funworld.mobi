@@ -1,0 +1,23 @@
+Options +MultiViews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+
+<IfModule mod_security.c>
+  SecFilterEngine Off
+  SecFilterScanPOST Off
+</IfModule>
+
+RewriteRule ^vd/index    /vodacom/index.php
+RewriteRule ^vd/echeck    /vodacom/echeck.php
+RewriteRule ^vd/gindex    /vodacom/gindex.php
+RewriteRule ^vd/redi    /vodacom/redirect.php
+RewriteRule ^vd/cancel    /vodacom/cancel.php
+
+RewriteRule ^vd/staging/index    /vodacom/staging/index.php
+RewriteRule ^vd/staging/redi    /vodacom/staging/redirect.php
+RewriteRule ^vd/staging/cancel    /vodacom/staging/cancel.php
+RewriteRule ^vd/staging/tnc.html    /vodacom/staging/tnc.html
+RewriteRule ^vd/tnc.html    /vodacom/tnc.html

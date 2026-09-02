@@ -1,0 +1,285 @@
+<?php
+error_reporting(0);
+//$conn11 = new PDO("mysql:host=10.125.1.51", 'webserveruser', 'K&dN&r4a8N@du0') or die(print_r($conn1->error));
+//$db="gamebardb_portugal";
+//include("../glamour/dbdetail.php");
+//$url60="http://funworld.mobi/spain/glamour/CancelSubscription.php";
+//session_start();
+$con=new mysqli("10.34.240.214","webserveruser","K&dN&r4a8N@du0") or die(mysqli_error());//cluster 2
+ $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+if (isset($_GET['p']))
+{
+	$p=$_GET['p'];
+	$p=$p+12;
+	$actual_link="videos1_fr.php";
+}
+
+else{
+$p=0;
+$actual_link="videos1_fr.php";
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+
+<title>Bienvenue chez worldforher</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script src="js/ie-emulation-modes-warning.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+<!-- Custom styles for this template -->
+<link href="css/carousel.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<style>
+body{
+	
+	background-size:cover; 
+	font-size:14px;
+	font-family: 'Open Sans', sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+					.button {
+						background-color: #4CAF50; /* Green */
+						border: none;
+						color: white;
+						padding: 4px 20px 4px 20px;
+						text-align: center;
+						text-decoration: none;
+						display: inline-block;
+						font-size: 16px;
+						margin: 2px 2px;
+						-webkit-transition-duration: 0.4s; /* Safari */
+						transition-duration: 0.4s;
+						cursor: pointer;
+						border-radius: 12px;
+						
+					}
+
+					
+
+
+					.button3 {
+						background-color: #f44336; 
+						color: white; 
+						border: 2px solid white;
+					}
+
+					.button3:hover {
+						background-color: grey;
+						color: white;
+					}
+
+
+					</style>
+
+<style>
+.footer {
+  
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: red;
+   color: white;
+   text-align: center;
+}
+.dropbtn {
+    background:transparent;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+   
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #000033;
+	min-width: 160px;
+	overflow: auto;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {
+	background:white;
+	color:black;
+	font-size:20px;
+	
+}
+
+.show {display:block;}
+
+</style>					
+					
+</head>
+
+<body>
+
+<div class="navbar-wrapper">
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-header">
+	
+	
+	
+<div class="dropdown" >
+<img onclick="myFunction()" class="dropbtn" src="icon_menu.png">
+
+
+
+  <div id="myDropdown" class="dropdown-content">
+    <a href="index_fr.php">Accueil</a>
+    <a href="thesis_fr.php?$p=0">Conseils</a>
+    <a href="videos_fr.php">Vidéos</a>
+    
+  </div><a href='index.php'><img  src="image/logo.png" width="173" height="58" class="logosvg"></a>
+</div>
+
+	
+	
+	
+	
+	
+	
+      
+     <!-- <a class="navbar-brand" href="#"><img src="image/logo.png" alt="" title="" style="height:50px ;width:40%"></a> --></div>
+     <div id="navbar" class="navbar-collapse collapse" style="
+    background-color: #cab4cb;">
+      <ul class="nav navbar-nav">
+      
+  </nav>
+</div>
+
+				
+				 
+					<center>
+					 <div class="container">
+            <div class="categoryrow">
+                <h5>Health & lifestyle<span class="information"></span></h5>
+               
+				<?php
+				$sql_ad="SELECT * FROM vodacom_za_content.`worldforher_videos` WHERE `category`=1 order by id asc limit 10";
+				$res_ad=mysqli_query($con,$sql_ad);
+				while($row_ad=mysqli_fetch_array($res_ad))
+				{
+					
+				?>
+
+			   <a href="Videoplayer.html?file=videos/<?php echo $row_ad['videofile'];?>">
+                    <div style="height: 60%; width: 100%; color: #900; border: solid; background-color: #fff; border-color: #c8b2cb; border-radius: 9px; position: relative; float: left; margin: 1% 1% 3% 3%; max-width: 500px;">
+                        <div>
+                            <img src='content/Images/<?php echo $row_ad['thumbnail'];?>' style="width: 100%; height: 260px" alt="" class='imgcls' />
+                            
+                        </div>
+                       
+                        <div>
+                            <h4><?php echo $row_ad['name_fr'];?>
+                            </h4>
+                        </div>
+                        
+                    </div>
+                </a>
+				
+				 <?php
+			   }
+			   ?>
+                
+            </div>
+			<div class="text-right">
+			<a href=''><button type="button" class="btn btn-primary">Next</button></a>
+			</div>
+        </div>
+				  </div>
+				<!--
+				   <div class="categoryrow">
+				   <h5> <a href="<?php //echo $actual_link;?>">More</a></h5>
+				  </div>
+				--> 
+				</div>
+				
+				
+	<?php
+	
+
+
+ //session_start();
+$clickid=$_COOKIE["vodacom_worldforher_act"];
+
+	?>	
+<br>
+<br>
+
+
+	
+	
+	
+	
+<script src="js/jquery.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<!-- Just to make our placeholder images work. Don't actually copy the next line! --> 
+<script src="js/holder.min.js"></script> 
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug --> 
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+
+
+</body>
+</html>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>

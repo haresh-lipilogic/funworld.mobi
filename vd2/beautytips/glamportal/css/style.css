@@ -1,0 +1,81 @@
+body{
+	background:url(../image/bg.png) no-repeat center center fixed; 
+	background-size:cover; 
+	font-size:14px;
+	font-family: 'Open Sans', sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+.navbar-brand{padding:0px;}
+.navbar{ margin-bottom:0px;}
+.navbar-wrapper .navbar{
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-ms-border-radius: 0px;
+	background: #ebebf1;
+	padding: 0px 15px;
+}
+.navbar-inverse{border:0px;}
+.navbar-inverse .navbar-nav > li > a{ color:#b91a6b;}
+.navbar-inverse .navbar-nav > li > a:hover{ background:#ff9900; color:#b91a6b}
+.navbar-toggle{background:#a94442; color:#b91a6b; margin:0px; margin-right:-15px; border-radius:0px; -webkit-border-radius:0px; -ms-border-radius:0px; padding:19px 17px; border:0px;}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover{ background:#a94442;}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{ border:0px; box-shadow:none;}
+.navbar-collapse{ padding:0px 0px; margin-left:-15px; margin-right:-15px;background:#fff;}
+.navbar-nav{ margin-left:0px; margin-right:0px; margin-top:0px;}
+
+.menu-icon{display: block; position:relative; width:30px; height:18px; top:0px; left:1px; margin:0 auto 0; -o-transition: all 500ms ease-in; -webkit-transition: all 500ms ease-in; -moz-transition: all 500ms ease-in; transition: all 500ms ease-in;}
+.menu-icon .icon-toggle {display: inline-block; transition: .3s; position: absolute; top:-4px; left:-1px; }
+.menu-icon .icon-toggle .lines {display: inline-block; position: relative; width:30px; height: 2px; background-color: #fff;}
+.menu-icon .icon-toggle .lines:before, .menu-icon .icon-toggle .lines:after {content: ''; display: inline-block; width: 30px; height: 2px; background-color: #fff; position: absolute; left: 0; -webkit-transform-origin: 50% 50%; transform-origin: 50% 50%;}
+.menu-icon .icon-toggle .lines:before {top: 6px;}
+.menu-icon .icon-toggle .lines:after {top: -6px;}
+.menu-icon .icon-toggle .lines {transition: background .3s .6s ease;}
+.menu-icon .icon-toggle .lines:before, .menu-icon .icon-toggle .lines:after { -webkit-transform-origin: 50% 50%;  transform-origin: 50% 50%; transition: top 0.3s 0.6s ease, -webkit-transform 0.3s ease;transition: top .3s .6s ease, transform .3s ease;}
+
+/*.navbar-toggle.collapsed .icon-toggle .lines {transition: background .3s 0s ease; background: transparent;}
+.navbar-toggle.collapsed .icon-toggle .lines:before, .navbar-toggle.collapsed .icon-toggle .lines:after {transition: top 0.3s ease, -webkit-transform 0.3s 0.5s ease;  transition: top .3s ease, transform .3s .5s ease; top: 0; width: 30px;}
+.navbar-toggle.collapsed .icon-toggle .lines:before {-webkit-transform: rotate3d(0, 0, 1, 45deg); -ms-transform: rotate(45deg); transform: rotate3d(0, 0, 1, 45deg);}
+.navbar-toggle.collapsed .icon-toggle .lines:after {-webkit-transform: rotate3d(0, 0, 1, -45deg); -ms-transform: rotate(-45deg); transform: rotate3d(0, 0, 1, -45deg); }*/
+
+.nav-tabs{ border-bottom:0px;}
+.nav-tabs > li{ width:50%;}
+.nav-tabs > li > a{ border:0px; background:#ddd; color:#c4151a; border-radius:0px; -webkit-border-radius:0px; -ms-border-radius:0px; text-align:center;}
+.nav-tabs > li > a:hover{background:#ddd;}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{background-color:#a94442; border:0px; color:#fff;}
+
+.categoryrow{ margin-bottom:10px; width:100%; float:left;}
+.categoryrow h5{border-bottom: 1px dashed #fff; margin-bottom:10px; padding-bottom:10px; font-size:16px; font-weight:600; color:#fff;}
+.categoryrow h5 a{ display:inline-block; padding:4px 8px; background:#a94442; color:#fff; float:right; font-size:13px; position:relative; margin-right:11px;}
+.categoryrow h5 a:before{ position:absolute; right:-11px; top:0px; width:0px; height:0px; border-bottom:11px solid transparent; border-top:11px solid transparent; border-left:11px solid #a94442; content:"";}
+
+.list-row{}
+.list-row .listblock {margin:3px; padding: 5px 5px; width:calc(33.3333% - 6px); float:left; background:#fff;}
+.list-row .listblock:last-child{ border-bottom:0px;}
+.list-row .listblock .list-img{float: left; width:100%; margin-bottom:10px;}
+.list-row .listblock .list-img img{ width:100%;}
+.list-row .list-details{float: left; width:100%; overflow: hidden; position: relative;}
+.list-row .list-details .list-info {display: block; vertical-align: top; font-size:12px;}
+.list-row .list-details .list-info h6{ font-size:12px; font-weight:600; font-family: 'Open Sans', sans-serif; color:#060606; margin-top:0px; margin-bottom:5px;}
+.list-row .list-details .list-action{display: table-row; vertical-align: top;}
+.list-row .list-details .list-action a{border-radius:0px; -webkit-border-radius:0px; -ms-border-radius:0px; border:1px dashed #c4151a; color:#c4151a ;font-size: 12px; line-height: 1.5; padding: 5px 0px; display:block; text-align:center;}
+.list-row .list-details .list-action a:hover{ text-decoration:none;}
+
+.list-row .listblock.seeall{ background:#a94442; text-align:center; font-size:14px; margin-top:15px; font-weight:600; width:100%; padding:3% 0px; display:block;}
+.list-row .listblock.seeall a{ color:#fff;}
+.list-row .listblock.seeall a:hover{ text-decoration:none;}
+
+.ratingdownload{ display:block;}
+.ratingdownload .rating, .ratingdownload .download{font-size:8px; display:inline-block; vertical-align:top;}
+.ratingdownload .rating{ }
+.ratingdownload .rating a{ text-decoration:none; color:#a94442;}
+.ratingdownload .download{font-size:9px; float:right; }
+.ratingdownload .download a{color:#c4151a;}
+
+.toplinks ul{ display:flex; margin:0px; border-bottom:1px solid #b38b05; border-top:1px solid #b38b05; padding:0px; list-style:none;}
+.toplinks ul li{ flex:1 1 auto;}
+.toplinks ul li > a{ border:0px; background:#ddd; display:block; border-radius:0px; -webkit-border-radius:0px; -ms-border-radius:0px; text-align:center; padding:10px 0px; border-right:1px solid #b38b05; color:#c4151a;}
+.toplinks ul li > a:hover{background:#a94442; text-decoration:none; color:#fff;}
+.toplinks ul li.active > a, .toplinks ul li.active > a:focus, .toplinks ul li.active > a:hover{background-color:#a94442; border:0px; color:#fff; text-decoration:none; border-right:1px solid #b38b05;}
+
+.footer{ margin-top:15px;}

@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <meta charset="utf-8">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, minimum-scale=1, maximum-scale=1, minimal-ui">
+    <title data-c-role="title">Gamebar</title>
+    
+    
+    
+    
+<link href="style.css" rel="stylesheet" type="text/css"></head>
+
+<body>
+    <div id="container" class="show-subscribe-button qa-html5">
+        <div id="top-wrap">
+          <!--  <div data-x-role="price" class="price">Vodafone: 3 QAR every 3 days. Ooredoo: QAR 9/week.</div>-->
+            <!-- CAR ANIMATION AND BACKGROUND -->
+            <!--<img src="images/1_html_title-en.png" alt="" class="title">-->
+            <div class="car-wrap" id="car">
+                <!-- <img src="/release/StreetRacingMania/html5/qa/qtel/en/default/v9/assets/2_html_arrow-down.png" alt="" class="pointer"> -->
+                <div id="flames"></div>
+                <img src="images/3_html_car_body.png" alt="" class="car slow">
+                <!--<img src="images/4_html_car_engine.png" alt="" class="engine">-->
+                <img src="images/5_html_wheel_rear.png" alt="" class="rearTyre slow">
+                <img src="images/6_html_wheel_front.png" alt="" class="frontTyre slow">
+                <img src="images/7_html_shadow.png" alt="" class="shadow">
+                <div class="dust slow"></div>
+            </div>
+            <!-- <div id="car-hotspot" class="subscribe"></div> -->
+            <!-- ANIMATION ENDS -->
+            <img src="images/8_html_wind.png" alt="" class="wind slow">
+            <img src="images/9_html_track.png" alt="" class="offroad-track slow">
+            <img src="images/10_html_rocks.png" alt="" class="rocks slow">
+            <img src="images/11_html_mountains.png" alt="" class="mountains slow">
+            <img src="images/12_html_background.png" alt="" class="bgmountains slow">
+
+            <!-- NUMBER ENTRY -->
+            <form id="number-entry" style="display:none">
+                <label data-x-role="enter-number">Enter your mobile number</label>
+                <input type="tel" id="number" maxlength="9" value="0">
+                <a href="javascript:void(0)" id="submit-number" class="btn">
+                    <span data-x-role="number-entry-submit">Submit</span>
+                </a>
+                <div class="price-point">You will be charged QAR 9/week</div>
+                <div id="already-subscribed-error" data-x-role="already-subscribed-error" style="display: none">You are already subscribed to this service</div>
+                <div id="invalid-number-error" data-x-role="invalid-number-error" style="display: none">Please enter a valid number</div>
+            </form>
+
+            <!-- PIN ENTRY -->
+            <form id="pin-entry" style="display:none">
+                <!-- <label data-x-role="pin-entry-help">Enter the pin code you received in the sms below</label> -->
+                <span data-x-role="subscription-info" class="subscription-info">You will now receive an sms with pin code. To confirm your subscription enter the PIN code below.</span>
+                <input type="tel" id="pin" maxlength="4">
+                <a href="javascript:void(0)" id="submit-pin" class="btn">
+                    <span data-x-role="pin-entry-submit">Submit</span>
+                </a>
+                <div class="price-point">You will be charged QAR 9/week</div>
+                <div id="invalid-pin-error" data-x-role="invalid-pin-error" style="display:none">You entered a wrong PIN</div>
+            </form>
+
+            <!-- MO MESSAGE -->
+            <div id="mo" style="display:none">
+                <span data-x-role="subscription-info" class="subscription-info">You will be charged QAR 9/week. Your subscription will be renewed automatically.</span>
+                <h3 data-x-role="mo-sms">sms</h3>
+                <div id="keyword"></div>
+                <h3 data-x-role="mo-to">to</h3>
+                <div id="short-code"></div>
+            </div>
+
+            <!-- CONGRATS -->
+            <div id="congrats" style="display:none">
+                <h3 data-x-role="congrats">Congratulations</h3>
+                <h6 data-x-role="successfully-subscribed">You have been successfully subscribed to the service</h6>
+            </div>
+        </div>
+
+        <div class="speedometer">
+            <div class="needle">
+                <img src="images/13_html_needle.png" alt="" class="slow">
+            </div>
+        </div>
+
+        <!-- SUBSCRIBE BUTTON -->
+        <div id="default-state1" style=" display: block; important" >
+            <a href="sms:60031?&body=Gamebar" id="subscribe" class="btn subscribe">
+                <span data-x-role="subscribe-now">Subscribe Now!</span>
+                <div class="hotspot subscribe"></div>
+            </a>
+            <div class="price-point">You will be charged QAR 9/week</div>
+        </div>
+
+        <!-- DOUBLE CONFIRMATION -->
+        <div id="double-confirmation" style="display: none">
+            <img src="images/14_html_trophy.png" alt="" class="trophy">
+            <h3>Ready for speed?</h3>
+            <span data-x-role="double-confirmation" class="doubl-des"><!-- You will be charged QAR 9/week.  -->Your subscription will be renewed automatically.</span>
+            <a href="javascript:void(0)" id="confirm" class="btn" style="margin-top:8px;">
+                <span data-x-role="confirmation-yes">YES</span>
+            </a>
+            <span data-x-role="confirmation-no" id="double-confirmation-no">NO</span>
+            <div class="price-point">You will be charged QAR 9/week</div>
+        </div>
+
+        <!-- Click Here -->
+        <div id="click-here">
+            <!-- <a href="javascript:void(0)" id="subscribe-link" data-c-role="click-here" class="subscribe">Click Here</a>
+            <span data-c-role="click-here-message">to subscribe for unlimited Mobile Games.</span> -->
+            <img src="images/gamebar.png" alt="" class="logo">
+            <span class="tagline">Unlimited Mobile Games</span>
+        </div>
+
+        <div class="footer-disclaimer">
+       <!--  <a href="?lang=ar" id="language"><img src="images/16_html_language-qa-ar.png" alt=""></a>-->
+            <div data-x-role="disclaimer" class="disclaimer">
+                Get unlimited access of Games upon subscription. 
+Ooredoo users will be charged QR 9/week. To unsubscribe send STOP to 92534. 
+To use this service you must be 18 years and above, or have received permission from your parents or person authorized to pay your bill.
+             <!--   <p><br><a href="http://live.vipgames.me/#/general-terms" target="_blank">Terms &amp; Conditions</a></p>
+            --></div>
+        </div>
+        <script type="text/javascript" data-ignore-renderer="">
+            window.mobiOneConstants = {
+    campaignId: 20798,
+    userId: 15089264641878556,
+    sessionId: 1508926464187,
+    clientSessionId: 0,
+    impressions: 0,
+    spyServer: "http://dump-analytics.mobileacademy.com/",
+    domain: "pages.mli.me",
+    q42: "pemn410Z",
+    queryTokens: "v%3D681%26clickid%3DwK852BBILDCU0M69H3AGKPDK%26pid%3D8f374e3a-dfe7-4790-b05e-99399745db81",
+    ip: "14.195.227.44",
+    partnerId: "594",
+    pageId: "1968",
+    country: "qa",
+    pageName: "StreetRacingMania",
+    platform: "html5",
+    pagePath: "StreetRacingMania-html5-qa-qtel-en-default",
+    postfix: "default"
+};
+
+
+    window.mobiOneConstants.duIframeUrl = ""
+
+
+
+    window.mobiOneConstants.tpayScriptUrl = ""
+
+
+
+    window.mobiOneConstants.queryParams = {
+    "v": "681",
+    "clickid": "wK852BBILDCU0M69H3AGKPDK",
+    "pid": "8f374e3a-dfe7-4790-b05e-99399745db81"
+}
+
+
+
+
+
+    window.mobiOneConstants.countryFromIp = "IN"
+
+
+
+
+function showStats(){
+    url = "http://192.168.1.42:4081/apis/branches/ptwb87c/execute/false/presentation"
+    window.open(url + "?pageId=" + window.mobiOneConstants.pageId + "&campaignId=" + window.mobiOneConstants.campaignId, "_blank")
+}
+
+<!-- close tag containing ejs -->
+</script>
+
+<!-- GTM dataLayer -->
+<script>
+    if (typeof dataLayer == 'undefined') {
+        dataLayer = [];
+    }
+    if (typeof mobiOneConstants != 'undefined') {
+        dataLayer.push(mobiOneConstants);
+    }
+</script>
+<!-- End GTM dataLayer -->
+
+<!-- GTM global events -->
+<script>
+
+    function hasCaller(str){
+      return new Error().stack.indexOf(str) > -1;
+    }
+
+    // Intercepts when iframe finishes loading.
+    //** Works WITH: html5IframeLandingPage, mraidIframeLandingPage
+    // TAG: iframe_loaded, Trigger: iframe_loaded
+    var iframeContainer = document.getElementById("iframe-container");
+
+    if(iframeContainer){
+        var iframeAppend = iframeContainer.appendChild;
+        iframeContainer.appendChild = function(el){
+          try {
+              if(el.tagName === "IFRAME"){
+                el.addEventListener("load", function(e){
+                  dataLayer.push({
+                    'iframe-source': el.src,
+                    'event':'iframe-load'
+                  });
+                });
+              }
+          } catch (e) {}
+
+        iframeAppend.apply(iframeContainer, arguments);
+      }
+    }
+
+    // Intercepts when page finishes loading.
+    //** Works WITH: commonLandingPage, commonMraidLangingPage, commonExpandableMraidLangingPage **
+    // TAG: script_loaded, Trigger: script_loaded
+    window.addEventListener("x-mobi-one-load",function(e){
+        dataLayer.push({'event':'script-load'});
+      });
+
+
+    // Intercepts when mobi-one request is sent
+    //** Works WITH: commonLandingPage, commonMraidLangingPage **
+    // TAG: submethod_request_sent, Trigger: requst_sent
+    var appendChild = document.head.appendChild;
+    var submethodSrc = "";
+    document.head.appendChild = function(el){
+      try {
+          if (el.tagName === "SCRIPT" && hasCaller("getSubMethod")){
+              dataLayer.push({
+                'submethod-url': el.src,
+                'event':'submethod-request-sent'
+              });
+              submethodSrc = el.src;
+          }
+      } catch (e) {}
+
+        appendChild.apply(document.head, arguments);
+    }
+
+    // Intercepts when mobi-one response is received
+    //** Works WITH: commonLandingPage, commonMraidLangingPage **
+    // TAG: submethod_response_received, Trigger: response_received
+    var removeChild = document.head.removeChild
+    document.head.removeChild = function(el){
+        try {
+            if (el.src === submethodSrc){
+                var data = arguments.callee.caller.arguments[0];
+                var visitId = data.visitId || data.VisitId || 0;
+                var subMethod = data.subMethod || data.SubMethod || '';
+                subMethod = (typeof subMethod) === "string" ? subMethod : subMethod.Method || JSON.stringify(subMethod);
+                var nextUrl = data.nextUrl || data.NextUrl || '';
+                dataLayer.push({
+                  'visit-id': visitId,
+                  'sub-method': subMethod,
+                  'next-url': nextUrl,
+                  'event':'submethod-response-received'
+                });
+            }
+        } catch (e) { }
+        removeChild.apply(document.head, arguments)
+    }
+
+</script>
+<!-- GTM global events -->
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXRZK5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NXRZK5');</script>
+<!-- End Google Tag Manager -->
+
+<script>
+
+        </script>
+        
+
+
+
+
+
+
+
+
+
+        
+   <!--     <img data-ignore-minification="true" src="/20798/imagePixel?_q42=pemn410Z&amp;_userId=15089264641878556&amp;_sessionId=1508926464187&amp;_clientSessionId=0&amp;_impressions=0&amp;creative=StreetRacingMania&amp;suffix=html5-qa-qtel-en-default&amp;queryTokens=v%3D681%26clickid%3DwK852BBILDCU0M69H3AGKPDK%26pid%3D8f374e3a-dfe7-4790-b05e-99399745db81" style="display: none" class="pixel">-->
+    </div>
+<script src="index.js" type="text/javascript"></script></body>
+
+</html>
