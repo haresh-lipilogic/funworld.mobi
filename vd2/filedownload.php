@@ -17,6 +17,21 @@ $ftp_user_pass = '|5}s25+*6owejV|:';
 //$date2=date('Ymd',strtotime("-1 days"));
 //echo $date2;exit;
 $date2 = date('Ymd');
+
+// Log file setup - one log file per run date.
+$logDir = __DIR__ . '/logs';
+if (!is_dir($logDir)) {
+	mkdir($logDir, 0755, true);
+}
+$logFile = $logDir . "/filedownload_$date2.log";
+
+function writeLog($message) {
+	global $logFile;
+	file_put_contents($logFile, '[' . date('Y-m-d H:i:s') . '] ' . $message . PHP_EOL, FILE_APPEND);
+}
+
+writeLog('===== Run started =====');
+
 //The path & filename to save to.
 $name = "uploads/SVMOBI_TRX_$date2.csv.gz";
 echo $name . "<br>";
@@ -27,8 +42,10 @@ $fp = fopen($saveTo, 'w+');
 
 //If $fp is FALSE, something went wrong.
 if ($fp === false) {
+	writeLog("ERROR: Could not open file for writing: $saveTo");
 	throw new Exception('Could not open: ' . $saveTo);
 } else {
+	writeLog("File handle opened for writing: $saveTo");
 	echo "working";
 }
 //exit;
@@ -42,10 +59,12 @@ curl_setopt($ch, CURLOPT_FILE, $fp);
 curl_setopt($ch, CURLOPT_TIMEOUT, 20);
 
 //Execute the request.
+writeLog("Starting SFTP download: $name from $fileUrl");
 curl_exec($ch);
 
 //If there was an error, throw an Exception
 if (curl_errno($ch)) {
+	writeLog('ERROR: cURL error: ' . curl_error($ch));
 	throw new Exception(curl_error($ch));
 }
 
@@ -59,8 +78,10 @@ curl_close($ch);
 fclose($fp);
 
 if ($statusCode == 200) {
+	writeLog("Downloaded successfully: $saveTo (status $statusCode)");
 	echo 'Downloaded!';
 } else {
+	writeLog("ERROR: Download failed with status code $statusCode");
 	echo "Status Code: " . $statusCode;
 }
 
@@ -70,8 +91,10 @@ $res = $zip->open($saveTo);
 if ($res === TRUE) {
 	$zip->extractTo($saveto);
 	$zip->close();
+	writeLog("Zip extracted: $saveTo");
 	echo 'woot!';
 } else {
+	writeLog("Zip open skipped/failed for $saveTo (code $res) - file is likely gzip, not zip");
 	echo 'doh!';
 }
 
@@ -93,6 +116,7 @@ while (!gzeof($file)) {
 // Files are done, close files
 fclose($out_file);
 gzclose($file);
+writeLog("Gzip decompressed: $out_file_name");
 $rk = 0;
 
 //$out_file_name='files/SVMOBI_TRX_20190318.csv';
@@ -115,6 +139,7 @@ while (($data = fgetcsv($file1, 10000, ";")) !== FALSE) {
 		echo "<br>charging_mode==" . $charging_mode = $data[5];
 
 		echo "<br><br>";
+		writeLog("Row $kk: subscriptionid=$subscriptionid, transactionid=$transactionid, charging_mode=$charging_mode");
 
 		if ($charging_mode == 'RENEWAL') {
 			$sql = "SELECT * FROM " . $db . ".`subscriber` WHERE subscriptionid='" . $subscriptionid . "' ORDER BY `id` DESC limit 1";
@@ -152,7 +177,11 @@ while (($data = fgetcsv($file1, 10000, ";")) !== FALSE) {
 			//`msisdn`, `clickid`, `advid`, `charging_mode`, `subscriptionstartdate`, `subscriptionenddate`, `amount`, `serviceid`, `txnid`, `subscriptionid`, `xvczaacr`
 			$stmt1 = $conn1->prepare("INSERT INTO " . $db . ".subscriber (msisdn,clickid,advid,charging_mode,subscriptionstartdate,subscriptionenddate,amount, serviceid,txnid,subscriptionid,xvczaacr) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 			$stmt1->bind_param("sssssssssss", $msisdn, $clickid, $advid, $charging_mode, $date, $subscriptionenddate, $amount, $serviceid, $txnid, $subcriptionid, $xvczaacr);
-			$stmt1->execute();
+			if ($stmt1->execute()) {
+				writeLog("RENEWAL insert OK: subscriptionid=$subscriptionid, msisdn=$msisdn");
+			} else {
+				writeLog("ERROR: RENEWAL insert failed for subscriptionid=$subscriptionid: " . $stmt1->error);
+			}
 			//exit;
 
 
@@ -190,7 +219,11 @@ while (($data = fgetcsv($file1, 10000, ";")) !== FALSE) {
 
 				$stmt1 = $conn1->prepare("INSERT INTO " . $db . ".subscriber (msisdn,clickid,advid,charging_mode,subscriptionstartdate,subscriptionenddate,amount, serviceid,txnid,subscriptionid,xvczaacr) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 				$stmt1->bind_param("ssssssssssssssssss", $msisdn, $clickid, $advid, $charging, $date, $subscriptionenddate, $amount, $serviceid, $txnid, $subcriptionid, $xvczaacr);
-				$stmt1->execute();
+				if ($stmt1->execute()) {
+					writeLog("ACTIVATION insert OK: subscriptionid=$subscriptionid, msisdn=$msisdn");
+				} else {
+					writeLog("ERROR: ACTIVATION insert failed for subscriptionid=$subscriptionid: " . $stmt1->error);
+				}
 				//exit;
 			}
 		}
@@ -211,3 +244,5 @@ while (($data = fgetcsv($file1, 10000, ";")) !== FALSE) {
 if ($rk > 0) {
 	//include('http://club.funzone.mobi/report/crons/mainreport_Vodacom1.php');
 }
+
+writeLog("===== Run finished: processed " . ($kk - 1) . " rows, $rk renewals =====");
