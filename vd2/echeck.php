@@ -53,8 +53,8 @@ $params = array(
 		//echo $url6; exit;
 		
 		$kk7=json_decode($kk6,true);
-		if($kk7['ft']==1000)
-		{
+		// if($kk7['ft']==1000)
+		// {
 		//echo "Success";	
 			$aut='ok';
 			$stmt1 = $conn1->prepare("INSERT INTO ".$dblog.".authcheck (url,clickid,accesstime,authcheck) VALUES (?,?,?,?)");
@@ -64,12 +64,12 @@ $params = array(
 		
 		
 			header("location:$kt");
-		}
-		else{
-			$aut='error';
-			$stmt1 = $conn1->prepare("INSERT INTO ".$dblog.".authcheck (url,clickid,accesstime,authcheck) VALUES (?,?,?,?)");
-			$stmt1->bind_param("ssss",$actual_link, $clickid,$receivedate,$aut);	
-			$stmt1->execute();
-			echo "you are not Authorized to subscribe this Offer";
-		exit;
-		}
+		// }
+		// else{
+		// 	$aut='error';
+		// 	$stmt1 = $conn1->prepare("INSERT INTO ".$dblog.".authcheck (url,clickid,accesstime,authcheck) VALUES (?,?,?,?)");
+		// 	$stmt1->bind_param("ssss",$actual_link, $clickid,$receivedate,$aut);	
+		// 	$stmt1->execute();
+		// 	echo "you are not Authorized to subscribe this Offer";
+		// exit;
+		// }
