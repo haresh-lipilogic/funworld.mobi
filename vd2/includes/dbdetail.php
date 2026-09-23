@@ -13,7 +13,8 @@ $advdb='advertiserdb';
 
 
 // added by lipilogic
-$clientSecret = 'vgIH2pY1afyPhGrG';
+// $clientSecret = 'vgIH2pY1afyPhGrG';
+$clientSecret = 'wsmcWehXrUq3oMRq';
 
 //$clientKey = '6Gk67IQB3uxYnqOH3DimATKga3IMlN6t';
 //$clientKey = 'mSeISYT2J3zXB3hNZmcKdM3ZUTQkRuMk';
@@ -21,7 +22,8 @@ $clientSecret = 'vgIH2pY1afyPhGrG';
 // $clientKey = '92bPL7MuG3T3WJXAW6w2Mt8wTKDh4mRh';
 
 // added by lipilogic
-$clientKey = 'LzZZJRVsBhTX7HaiMLqO1OBEOW7bNCD9';
+// $clientKey = 'LzZZJRVsBhTX7HaiMLqO1OBEOW7bNCD9';
+$clientKey = 'v88x0KDyeaW0qsGiY6uixgNXoGU8iMdB';
 $authHeader = base64_encode("$clientKey:$clientSecret");
 
 date_default_timezone_set("Asia/Kolkata");
