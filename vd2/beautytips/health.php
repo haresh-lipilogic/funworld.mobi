@@ -1,5 +1,6 @@
 <?php
-$con=new mysqli("10.34.240.214","webserveruser","K&dN&r4a8N@du0") or die(mysqli_error());//cluster 2
+require_once __DIR__ . '/../includes/env.php';
+$con=new mysqli(env('DB_HOST'), env('DB_USER'), env('DB_PASS')) or die(mysqli_error());//cluster 2
 ?>
 
 <!DOCTYPE html>
