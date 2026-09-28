@@ -27,7 +27,6 @@ if (sizeof($ip) == 1) {
 	exit;
 }
 
-
 if ($_SERVER['REMOTE_ADDR'] == '') {
 	$xforward = '';
 } else {
@@ -64,7 +63,6 @@ if ($_GET['advid'] == '') {
 	//exit;
 }
 
-
 if ($serviceid == 1) {
 	$sql24 = "SELECT * from " . $advdb . ".campaignconfig  where operator='Vodacom_wfh' and product='glambar'";
 	$op = 'Vodacom_wfh';
@@ -91,21 +89,16 @@ while ($row = $me1->fetch_assoc()) {
 $date55 = date('Y-m-d');
 $sql24 = "SELECT distinct(subscriber.clickid) from " . $db . ".subscriber inner join " . $dblog . ".userlog on subscriber.clickid=userlog.clickid where charging_mode='trial' and amount=0  and userlog.accesstime>'" . $date55 . "' and subscriptionstartdate >'" . $date55 . "' and subscriber.serviceid='" . $serviceid . "'";
 
-//echo $sql24;exit;
-
 $me1 = $conn1->query($sql24);
 
 $rowcount11 = mysqli_num_rows($me1);
 
-//echo $activationcap;
-//echo "<br>".$rowcount11;
 if ($activationcap <= $rowcount11) {
 	echo "Full Cap is Over please contact Administrator";
 	exit;
 }
 
 $sql24 = "SELECT * from " . $db . ".advertmanage  where advertiserid='" . $advertiserid . "' and serviceid='" . $serviceid . "'";
-//echo $sql24."<br>";exit;
 $me1 = $conn1->query($sql24);
 $rowcount25 = 0;
 $rowcount25 = mysqli_num_rows($me1);
@@ -138,13 +131,11 @@ if ($rowcount25 > 0) {
 
 $useragent = strtolower($_SERVER['HTTP_USER_AGENT']); // User Agent
 
-
 if ($_GET['pubid'] == '') {
 	$pubid = '101010';
 } else {
 	$pubid = $_GET['pubid'];
 }
-
 
 if ($_GET['clickid'] == '') {
 	$advertclickid = '';
@@ -162,7 +153,6 @@ $mt = microtime(true);
 $mt =  $mt * 1000; //microsecs
 $clickid = "zavod" . ((string)$mt * 10) . rand(1, 999);
 
-
 $useragent = strtolower($_SERVER['HTTP_USER_AGENT']);
 
 if (strpos($useragent, 'android') == true || strpos($useragent, 'iphone') == true) {
@@ -175,12 +165,7 @@ if (strpos($useragent, 'opera') == true) {
 	exit;
 }
 
-
 $operator = '';
-
-
-
-
 
 $accesstokenreq = generateAccessToken();
 //print_r($accesstokenreq);exit;
@@ -191,12 +176,6 @@ $aar = json_decode($accesstokenreq, true);
 $accesstoken = $aar['access_token'];
 $clientid = $aar['client_id'];
 $application_name = $aar['application_name'];
-//echo "<br>accesstoken=".$accesstoken;
-//echo "<br>client_id=".$clientid;
-//echo "<br>application_name=".$application_name;
-//$accesstoken=
-//echo "<br>";
-//echo "<br>";
 
 if (isset($_SERVER['HTTP_X_API_ID']) || isset($_GET['test'])) {
 	//echo "hi";exit;
@@ -211,12 +190,10 @@ if (isset($_SERVER['HTTP_X_API_ID']) || isset($_GET['test'])) {
 
 	$msisdn = 0;
 }
-//echo "hi2";
 $xvczaacr = $msisdn;
 $xforwardwith = strtolower($_SERVER['HTTP_X_REQUESTED_WITH']);
 date_default_timezone_set("Asia/Kolkata");
 $date = date("Y-m-d H:i:s");
-//echo "<br>msisdn=".$msisdn."<br>" ;
 $insert_userlog = "call " . $dblog . ".insert_userlog ('" . $date . "','" . $msisdn . "','" . $operator . "','" . $referrer . "','" . $clickid . "','" . $pubid . "','" . $advertiserid . "','" . $ip . "','" . $advertclickid . "','" . $useragent . "','" . $xforwardwith . "','" . $serviceid . "','" . $pageurl . "','" . $xvczaacr . "')";
 $res_userlog = $conn1->query($insert_userlog);
 
@@ -234,22 +211,14 @@ if ($serviceid == 1) //wfh
 	$service = 'vc-svmobi-gamebar-01';
 }
 
-
 if ($msisdn != 0) {
 
 	$getserviceeligibility = getServiceEligibilityHE($application_name, $accesstoken, $service, $msisdn, $clickid);
 
 	$aar1 = json_decode($getserviceeligibility, true);
 
-	//$uuid=random_string();
-	//print_r($aar1);
-	//exit;
-
-	//echo $packageid;exit;
-	//echo $aar1['errorCode'];exit;
 	if (isset($aar1['errorCode'])) {
-		//echo "error code=".$aar1['errorCode'];
-		//echo "<br>errorType=".$aar1['errorType'];
+		
 		if ($aar1['errorCode'] == '409') {
 			if ($serviceid == 1) //wfh
 			{
@@ -266,7 +235,6 @@ if ($msisdn != 0) {
 			}
 
 			echo "<html><body style='color: white;background-color: #333; font-size=60px;'><center>you have already subscribed the service please click <a href='$portal'> Here</a> to access the portal</center></body></html> ";
-			//header('location:gamebar/');exit;	
 		}
 
 		exit;
@@ -286,10 +254,6 @@ if ($msisdn != 0) {
 		$pr = json_decode($productofferingHE, true);
 
 		$redurl = $pr['relatedParty'][0]['id'];
-		//print_r($redurl);
-
-
-
 
 	}
 } else {
@@ -308,15 +272,11 @@ if ($msisdn != 0) {
 		$packageid = 'package:p-svmobi-gamebar-c-01_TAX_3_8_999_999_999_TRIAL_*_*_false_false_*_*_*';
 	}
 
-
 	//$packageid ='package:p-svmobi-gamebar-c-01_TAX_3_8_999_999_999_TRIAL_*_*_false_false_*_*_*';
 	$productofferingHE = productoffering($msisdn, $packageid, $accesstoken, $application_name, $service, $clickid);
-	//echo $productofferingHE;
 	$pr = json_decode($productofferingHE, true);
-	//print_r($pr);
 
 	$redurl = $pr['relatedParty'][0]['id'];
-	//print_r($redurl);
 
 }
 if ($serviceid == 1) {
@@ -361,10 +321,6 @@ if ($advertiserid == '1142' || $advertiserid == '1512') //|| $advertiserid=='115
 	<title><?php echo $name; ?></title>
 
 	<meta http-equiv="expires" content="Mon, 06 Jan 1990 00:00:01 GMT">
-
-	<!--<link href="/skysms/css/DCB_go4mobility.css" type="text/css" rel="stylesheet">     
-			-->
-
 	<style>
 		.button {
 			background-color: #4CAF50;

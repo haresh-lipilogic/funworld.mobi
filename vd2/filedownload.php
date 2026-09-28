@@ -2,20 +2,15 @@
 //The resource that we want to download.
 
 include "includes/dbdetail.php";
-//include "function.php";
-//exit;
 /*
 $fileUrl = '213.239.205.74'; 
 $ftp_user_name = 'sftpsvmobi'; 
 $ftp_user_pass = 'h9rxHDeuEz6N6SttwnHRqCrbPMXwzQ';*/
 
-
 $fileUrl = env('SFTP_HOST');
 $ftp_user_name = env('SFTP_USER');
 $ftp_user_pass = env('SFTP_PASS');
 
-//$date2=date('Ymd',strtotime("-1 days"));
-//echo $date2;exit;
 $date2 = date('Ymd');
 
 // Log file setup - one log file per run date.
@@ -25,7 +20,8 @@ if (!is_dir($logDir)) {
 }
 $logFile = $logDir . "/filedownload_$date2.log";
 
-function writeLog($message) {
+function writeLog($message)
+{
 	global $logFile;
 	file_put_contents($logFile, '[' . date('Y-m-d H:i:s') . '] ' . $message . PHP_EOL, FILE_APPEND);
 }
@@ -124,20 +120,15 @@ $file1 = fopen("$out_file_name", "r");
 
 $kk = 0;
 while (($data = fgetcsv($file1, 10000, ";")) !== FALSE) {
-
-
 	if ($kk == 0) {
 		$kk++;
 	} else {
-
 		echo "<br>SUBSCRIPTION_ID==" . $subscriptionid = $data[0];
-
 		echo "<br>TRANSACTION_ID==" . $transactionid = $data[1];
 		echo "<br>PACKAGE_ID==" . $service_code = $data[2];
 		echo "<br>amount==" . $amount = $data[3];
 		echo "<br>timestamp==" . $timestamp = $data[4];
 		echo "<br>charging_mode==" . $charging_mode = $data[5];
-
 		echo "<br><br>";
 		writeLog("Row $kk: subscriptionid=$subscriptionid, transactionid=$transactionid, charging_mode=$charging_mode");
 
@@ -182,14 +173,9 @@ while (($data = fgetcsv($file1, 10000, ";")) !== FALSE) {
 			} else {
 				writeLog("ERROR: RENEWAL insert failed for subscriptionid=$subscriptionid: " . $stmt1->error);
 			}
-			//exit;
-
-
 
 		} else {
-
 			$sql = "SELECT * FROM " . $db . ".`subscriber` WHERE subscriptionid='" . $subscriptionid . "' ORDER BY `id` DESC limit 1";
-
 			$result1 = $conn1->query($sql);
 			//$numrows1=$result1->num_rows;
 
@@ -200,10 +186,7 @@ while (($data = fgetcsv($file1, 10000, ";")) !== FALSE) {
 			$advid = $row['advid'];
 			$charging3 = $row['charging_mode'];
 			$serviceid = $row['serviceid'];
-
 			$txnid = $row['txnid'];
-
-
 			$subcriptionid = $row['subscriptionid'];
 			$xvczaacr = $row['xvczaacr'];
 
@@ -224,7 +207,6 @@ while (($data = fgetcsv($file1, 10000, ";")) !== FALSE) {
 				} else {
 					writeLog("ERROR: ACTIVATION insert failed for subscriptionid=$subscriptionid: " . $stmt1->error);
 				}
-				//exit;
 			}
 		}
 
@@ -232,12 +214,9 @@ while (($data = fgetcsv($file1, 10000, ";")) !== FALSE) {
 	}
 }
 
-
 //header('location:http://club.funzone.mobi/report/crons/activation_vodacom.php');
 ?>
 <img src="http://club.funzone.mobi/report/crons/activation_vodacom.php" alt="Italian Trulli">
-
-
 
 <?php
 //header('location:http://club.funzone.mobi/report/crons/mainreport_Vodacom.php');
