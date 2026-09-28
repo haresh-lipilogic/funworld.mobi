@@ -5,7 +5,8 @@ error_reporting(0);
 //include("../glamour/dbdetail.php");
 //$url60="http://funworld.mobi/spain/glamour/CancelSubscription.php";
 //session_start();
-$con=new mysqli("10.34.240.214","webserveruser","K&dN&r4a8N@du0") or die(mysqli_error());//cluster 2
+require_once __DIR__ . '/includes/env.php';
+$con=new mysqli(env('DB_HOST'), env('DB_USER'), env('DB_PASS')) or die(mysqli_error());//cluster 2
  $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 mysqli_set_charset($con,"utf8");
 if (isset($_GET['p']))

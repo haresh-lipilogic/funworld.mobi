@@ -6,7 +6,8 @@
 //$url60="http://club.funzone.mobi/spain/glamour/CancelSubscription.php";
 //session_start();
 
-$conn1 = mysqli_connect('10.34.240.214', 'webserveruser', 'K&dN&r4a8N@du0') or die(print_r($conn1->error));
+require_once __DIR__ . '/includes/env.php';
+$conn1 = mysqli_connect(env('DB_HOST'), env('DB_USER'), env('DB_PASS')) or die(print_r($conn1->error));
 mysqli_set_charset($conn1,"utf8");
  $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
