@@ -4,10 +4,11 @@ ini_set('max_execution_time', 6000);
 
 //include("includes/check_session.php");
 //include("includes/connection.php");
+require_once __DIR__ . '/includes/env.php';
 date_default_timezone_set("Asia/Calcutta");
 error_reporting(0);
-$con=new mysqli("10.125.1.51","webserveruser","K&dN&r4a8N@du0") or die(mysqli_error());//cluster 2
-$con3=new mysqli("10.125.1.51","webserveruser","K&dN&r4a8N@du0") or die(mysqli_error());//cluster 2
+$con=new mysqli(env('DB_HOST'), env('DB_USER'), env('DB_PASS')) or die(mysqli_error());//cluster 2
+$con3=new mysqli(env('DB_HOST'), env('DB_USER'), env('DB_PASS')) or die(mysqli_error());//cluster 2
 
 
 
