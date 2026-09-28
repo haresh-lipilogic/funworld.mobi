@@ -3,7 +3,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$conn = new PDO("mysql:host=10.125.1.51", 'webserveruser', 'K&dN&r4a8N@du0') or die(print_r($conn->error));
+require_once __DIR__ . '/includes/env.php';
+$conn = new PDO("mysql:host=" . env('DB_HOST_SECONDARY'), env('DB_USER'), env('DB_PASS')) or die(print_r($conn->error));
 
 session_start();
 
