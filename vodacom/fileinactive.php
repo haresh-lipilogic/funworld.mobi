@@ -17,9 +17,9 @@ $ftp_user_name = 'sftpsvmobi';
 $ftp_user_pass = 'h9rxHDeuEz6N6SttwnHRqCrbPMXwzQ';*/
 
 
-$fileUrl = '35.247.174.49'; 
-$ftp_user_name = 'vodftp'; 
-$ftp_user_pass = '|5}s25+*6owejV|:';
+$fileUrl = env('SFTP_INACTIVE_HOST');
+$ftp_user_name = env('SFTP_INACTIVE_USER');
+$ftp_user_pass = env('SFTP_INACTIVE_PASS');
 
 $date2=date('Ymd',strtotime("-2 days"));
 $date6=$date2."17:05:05";

@@ -1,9 +1,10 @@
 <?php
 
+require_once __DIR__ . '/includes/env.php';
 //include "includes/dbdetail.php";
 //include "function.php";
 
- $ftp_server = '213.239.205.74'; $ftp_user_name = 'sftpsvmobi'; $ftp_user_pass = 'h9rxHDeuEz6N6SttwnHRqCrbPMXwzQ';
+ $ftp_server = env('SFTP_LEGACY_HOST'); $ftp_user_name = env('SFTP_LEGACY_USER'); $ftp_user_pass = env('SFTP_LEGACY_PASS');
 
 $c = curl_init("sftp://$ftp_user_name:$ftp_user_pass@$ftp_server/SVMOBI_TRX_20190319.csv.gz");
 curl_setopt($c, CURLOPT_PROTOCOLS, CURLPROTO_SFTP);

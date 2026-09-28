@@ -11,7 +11,8 @@ if (isset($_SERVER['HTTP_X_VC_ACR']))
 	exit;
 }
 
-$conn1 = mysqli_connect('10.125.1.51', 'webserveruser', 'K&dN&r4a8N@du0') or die(print_r($conn1->error));
+require_once __DIR__ . '/../includes/env.php';
+$conn1 = mysqli_connect(env('DB_HOST_WFH_FB'), env('DB_USER'), env('DB_PASS')) or die(print_r($conn1->error));
 
  $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 

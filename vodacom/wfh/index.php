@@ -51,7 +51,7 @@ if (isset($_SERVER['HTTP_X_VC_ACR']))
 }
 
 
-$conn1 = mysqli_connect('10.125.1.51:3308', 'webserveruser', 'K&dN&r4a8N@du0') or die(print_r($conn1->error));
+$conn1 = mysqli_connect(env('DB_HOST_WFH_INDEX'), env('DB_USER'), env('DB_PASS')) or die(print_r($conn1->error));
 
  $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 

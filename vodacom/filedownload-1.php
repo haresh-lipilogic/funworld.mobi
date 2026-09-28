@@ -5,9 +5,9 @@ include "includes/dbdetail.php";
 //include "function.php";
 //exit;
 
-$fileUrl = '213.239.205.74'; 
-$ftp_user_name = 'sftpsvmobi'; 
-$ftp_user_pass = 'h9rxHDeuEz6N6SttwnHRqCrbPMXwzQ';
+$fileUrl = env('SFTP_LEGACY_HOST');
+$ftp_user_name = env('SFTP_LEGACY_USER');
+$ftp_user_pass = env('SFTP_LEGACY_PASS');
 $i=$_GET['i'];
 
 $date2=date('Ymd',strtotime("-".$i." days"));
