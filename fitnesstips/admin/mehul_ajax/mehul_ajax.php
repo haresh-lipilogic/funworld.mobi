@@ -6,8 +6,9 @@
 //include("../includes/check_session.php");
 //include("../includes/connection.php");
 //error_reporting(0);
+require_once __DIR__ . '/../includes/env.php';
 //$con=mysql_connect("10.125.0.50:3307","webserveruser","K&dN&r4a8N@du567") or die(mysql_error());
-$con=new mysqli("10.125.0.50:3307","webserveruser","K&dN&r4a8N@du567") or die(mysqli_error());
+$con=new mysqli(env('DB_HOST_MEHUL'), env('DB_USER_MEHUL'), env('DB_PASS_MEHUL')) or die(mysqli_error());
 
 				$startdate=$_GET['startdate'];
 				$enddate=$_GET['enddate'];
@@ -33,7 +34,7 @@ $con=new mysqli("10.125.0.50:3307","webserveruser","K&dN&r4a8N@du567") or die(my
 			//	exit;
 				if($date3>$newdate)
 				{
-					$con=new mysqli("43.231.124.191","productionuser","Zb8#fNIsXnoP12") or die(mysqli_error());
+					$con=new mysqli(env('DB_HOST_MEHUL_OLD'), env('DB_USER_MEHUL_OLD'), env('DB_PASS_MEHUL_OLD')) or die(mysqli_error());
 					$date2=explode('-',$newdate);
 					//echo $date3;
 					//echo "<br>".$newdate;
