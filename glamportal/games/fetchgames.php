@@ -1,5 +1,6 @@
 <?php
-$con2=mysqli_connect('10.125.1.51','webserveruser','K&dN&r4a8N@du0') or die(mysql_error());
+require_once __DIR__ . '/../includes/env.php';
+$con2=mysqli_connect(env('DB_HOST_SECONDARY'), env('DB_USER'), env('DB_PASS')) or die(mysql_error());
 $url='https://pub.gamezop.com/v3/games?id=r12Y2MARPW';
 
 
