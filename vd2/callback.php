@@ -128,7 +128,7 @@ if ($status == 'TRANSACTION SUCCESSFUL') {
 
 	$stmt1->execute();
 	if ($charging_mode == 'trial') {
-		$callback = callback($clickid, $serviceid1, $advid, $chage);
+		// $callback = callback($clickid, $serviceid1, $advid, $chage);
 	}
 } else {
 }
